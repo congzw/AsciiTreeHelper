@@ -1,4 +1,5 @@
 ﻿using System;
+using System.IO;
 using System.Text;
 using AsciiTreeDemo.Helpers;
 
@@ -8,10 +9,10 @@ namespace AsciiTreeDemo
     {
         static void Main(string[] args)
         {
+            var asciiTreeHelper = new AsciiTreeHelper();
             // Get the list of nodes
             var topLevelNodes = Mock.CreateNodeList(3, 5);
 
-            var asciiTreeHelper = new AsciiTreeHelper();
             asciiTreeHelper.MaxPrintDeep = 2;
             var sb = new StringBuilder();
             foreach (var topLevelNode in topLevelNodes)

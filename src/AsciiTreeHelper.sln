@@ -3,10 +3,11 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
 VisualStudioVersion = 15.0.28307.489
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AsciiTreeDemo", "AsciiTreeDemo\AsciiTreeDemo.csproj", "{60DBC745-F028-422D-83F5-CF0F8CD165A0}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AsciiTreeDemo", "AsciiTreeDemo\AsciiTreeDemo.csproj", "{60DBC745-F028-422D-83F5-CF0F8CD165A0}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{FC617F0A-1C1B-4495-895F-C6310776EE33}"
 	ProjectSection(SolutionItems) = preProject
+		..\tools\AsciiTreeHelper.exe = ..\tools\AsciiTreeHelper.exe
 		..\README.md = ..\README.md
 	EndProjectSection
 EndProject

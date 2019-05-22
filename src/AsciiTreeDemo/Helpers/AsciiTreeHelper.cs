@@ -1,3 +1,7 @@
+using System;
+using System.Collections.Generic;
+using System.IO;
+using System.Linq;
 using System.Text;
 
 namespace AsciiTreeDemo.Helpers
@@ -47,6 +51,48 @@ namespace AsciiTreeDemo.Helpers
             }
 
             ProcessNode(node, indent, sb, currentDeep);
+        }
+
+        public string GetCurrentTree()
+        {
+            var nodes = new List<Node>();
+            var currentDirectory = AppDomain.CurrentDomain.BaseDirectory;
+            var directories = Directory.GetDirectories(currentDirectory);
+            foreach (var directory in directories)
+            {
+                var directoryInfo = new DirectoryInfo(directory);
+                var node = new Node();
+                AppendChildNode(node, directoryInfo);
+                nodes.Add(node);
+            }
+
+            var sb = new StringBuilder();
+            foreach (var node in nodes)
+            {
+                ProcessNode(node, "", sb, 0);
+            }
+            return sb.ToString();
+        }
+
+        private void AppendChildNode(Node node, DirectoryInfo directoryInfo)
+        {
+            node.Name = directoryInfo.Name;
+
+            //child files
+            foreach (var fileInfo in directoryInfo.GetFiles().OrderBy(x => x.Name))
+            {
+                var childFileNode = new Node();
+                childFileNode.Name = fileInfo.Name;
+                node.Children.Add(childFileNode);
+            }
+
+            //child dir
+            foreach (var childDir in directoryInfo.GetDirectories().OrderBy(x => x.Name))
+            {
+                var childDirNode = new Node();
+                node.Children.Add(childDirNode);
+                AppendChildNode(childDirNode, childDir);
+            }
         }
     }
 }
